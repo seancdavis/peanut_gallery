@@ -1,0 +1,6 @@
+<article class="comment">
+  <%= comment.html.html_safe %>
+  <%= content_tag :span, "by #{comment.author.name}", :class => 'author' %>
+  <%= content_tag :span, "#{time_ago_in_words(comment.created_at)} ago",
+                  :class => 'date' %>
+</article>
