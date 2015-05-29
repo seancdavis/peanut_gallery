@@ -11,6 +11,29 @@ class PeanutGallery::CommentsController < ApplicationController
     end
   end
 
+  def update
+    @comment = Comment.find_by_id(params[:id])
+    if @comment.nil?
+      raise "Could not find comment."
+    else
+      if @comment.save
+        redirect_to request.referrer, :notice => 'Comment saved!'
+      else
+        redirect_to request.referrer, :notice => 'Comment could not be saved.'
+      end
+    end
+  end
+
+  def destroy
+    @comment = Comment.find_by_id(params[:id])
+    if @comment.nil?
+      raise "Could not find comment."
+    else
+      @comment.destroy
+      redirect_to request.referrer, :notice => 'Comment deleted!'
+    end
+  end
+
   private
 
     def comment_params

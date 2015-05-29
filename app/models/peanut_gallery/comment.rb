@@ -6,6 +6,8 @@ module PeanutGallery
     belongs_to :item, :polymorphic => true
     belongs_to :author, :class_name => 'User'
 
+    default_scope { includes(:item, :author) }
+
     scope :newest_first, -> { order('created_at desc') }
     scope :oldest_first, -> { order('created_at asc') }
 

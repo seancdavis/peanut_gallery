@@ -18,5 +18,10 @@ module PeanutGallery
       end
     end
 
+    def delete_comment_link(comment)
+      link_to 'Delete Comment', peanut_gallery_comment_path(comment),
+              :method => :delete, :data => { :confirm => 'Are you sure?' }
+    end
+
   end
 end
